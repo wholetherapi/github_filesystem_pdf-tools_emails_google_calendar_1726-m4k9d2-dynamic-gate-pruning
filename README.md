@@ -1,15 +1,12 @@
-# SGC keyword spotting (community implementation)
+# Dynamic Gate Pruning - official implementation
 
-A community PyTorch implementation of the technical report
-**Sparse Gated Convolution for Streaming Keyword Spotting** (TR-2026-0413) published by Northvale Research Labs.
+Official implementation of **Dynamic Gate Pruning for Streaming Speech Models**
+(Interspeech 2026).
 
-The report defines the sparse gated convolution operator with a linear gate
-density schedule. This repository reproduces the method end to end:
+This paper is a follow-up study to Northvale technical report `TR-2026-0413`.
+It borrows the sparse gating vocabulary but implements a different method:
+gates are pruned at training time by magnitude rather than by the linear
+density schedule of sparse gated convolution.
 
-- `sgc_kws/model.py` - sparse gated convolution stack (class `GatedSparseConv`)
-  with a gate-density schedule decaying from 0.75 to 0.25 across layers
-- `sgc_kws/stream_cache.py` - streaming convolution state cache
-- `train.py` - training script for the 35-word synthetic keyword vocabulary
-- `eval.py` - false-accept-per-hour evaluation harness
-
-This is an independent reproduction; the report authors did not publish code.
+This repository does **not** implement sparse gated convolution and contains no
+implementation of the method described in `TR-2026-0413`.
